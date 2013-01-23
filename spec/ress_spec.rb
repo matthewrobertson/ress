@@ -28,4 +28,12 @@ describe Ress do
 
   end
 
+  describe '.configure' do
+
+    it 'yields itself' do
+      Ress.configure { |r| r.should == Ress }
+    end
+
+  end
+
 end

@@ -13,4 +13,8 @@ module Ress
   def self.categories
     @@categories
   end
+
+  def self.configure
+    yield(self)
+  end
 end
