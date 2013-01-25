@@ -20,7 +20,7 @@ describe Ress::DeviceCategory do
 
     it 'defaults to something' do
       category = Ress::DeviceCategory.new('mobile', 'some media query')
-      category.view_path.should == 'app/views/mobile_views'
+      category.view_path.should == 'app/mobile_views'
     end
 
     it 'can be overridden by an optional parameter' do
