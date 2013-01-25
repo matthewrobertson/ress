@@ -1,20 +1,16 @@
 require "ress/version"
 require "ress/device_category"
+require "ress/category_collection"
 
 module Ress
+  extend self
 
-  @@categories = []
-
-  def self.register_category(options)
-    category = DeviceCategory.new(options.delete(:name), options.delete(:media_type), options)
-    @@categories << category
+  def categories
+    @categories ||= CategoryCollection.new
   end
 
-  def self.categories
-    @@categories
+  def configure
+    yield(categories)
   end
 
-  def self.configure
-    yield(self)
-  end
 end
