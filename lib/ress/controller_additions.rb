@@ -23,6 +23,6 @@ end
 
 if defined? ActionController::Base
   ActionController::Base.class_eval do
-    include CanCan::ControllerAdditions
+    include Ress::ControllerAdditions
   end
 end

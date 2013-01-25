@@ -56,4 +56,13 @@ describe Ress::DeviceCategory do
 
   end
 
+  describe '#add_subdomain' do
+
+    let(:category) { Ress::DeviceCategory.new('mobile', 'some media query', :subdomain => 'foo') }
+
+    it 'prepends the subdomain to the url' do
+      category.add_subdomain('bar.com').should == 'foo.bar.com'
+    end
+  end
+
 end

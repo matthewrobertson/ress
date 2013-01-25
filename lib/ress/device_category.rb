@@ -19,6 +19,10 @@ module Ress
       @view_path || default_view_path
     end
 
+    def add_subdomain(base_url)
+      "#{subdomain}.#{base_url}"
+    end
+
     private
 
       def default_view_path
