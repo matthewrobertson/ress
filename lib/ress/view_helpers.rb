@@ -2,9 +2,12 @@ module Ress
 
   module ViewHelpers
 
-
-    def ress_category_tag(category, base_url)
-      category.link_tag(request.protocol, base_url, self)
+    def ress_link_tags
+      path = Ress.categories.base_host_name(request.host_with_port)
+      path = "#{path}#{request.fullpath}"
+      Ress.categories.map do |category|
+        category.link_tag(request.protocol, path, self)
+      end.join.html_safe
     end
 
   end
