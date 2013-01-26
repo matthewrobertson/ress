@@ -56,13 +56,25 @@ describe Ress::DeviceCategory do
 
   end
 
-  describe '#add_subdomain' do
+  describe '#link_tag' do
 
-    let(:category) { Ress::DeviceCategory.new('mobile', 'some media query', :subdomain => 'foo') }
+    let(:category) { Ress::DeviceCategory.new('mobile', 'some media query') }
+    let(:view) { stub('view') }
 
-    it 'prepends the subdomain to the url' do
-      category.add_subdomain('bar.com').should == 'foo.bar.com'
+    def link_tag(base_url, protocol, view)
+      view.tag :link, :rel => 'alternate', :href => href(base_url, protocol), :id => id, :media => media_query
     end
+
+    it 'passes args to the view tag helper' do
+      view.should_receive(:tag).with(:link, {
+        :rel   => "alternate",
+        :href  => "http://mobile.foo.com",
+        :id    => "mobile",
+        :media => "some media query"
+      }).and_return('<link>')
+      category.link_tag('http://', 'foo.com', view).should == '<link>'
+    end
+
   end
 
 end

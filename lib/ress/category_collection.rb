@@ -3,7 +3,7 @@ module Ress
   class CategoryCollection
     extend Forwardable
 
-    def_delegators :categories, :size, :each, :last
+    def_delegators :categories, :size, :each, :last, :map
 
     def initialize
       @categories = []

@@ -7,14 +7,13 @@ describe ActionView::Base do
 
     let(:view) { ActionView::Base.new }
     let(:request) { stub('request', :protocol => 'http://') }
-    let(:category) { stub('category', :id => 'm', :media_query => 'stuff') }
+    let(:category) { Ress::DeviceCategory.new('m', 'stuff') }
 
     before do
       view.stub(:request => request)
     end
 
     it 'generates the href from the category' do
-      category.should_receive(:add_subdomain).and_return('m.foo/bar')
       view.ress_category_tag(category, 'foo/bar').should ==
         "<link href=\"http://m.foo/bar\" id=\"m\" media=\"stuff\" rel=\"alternate\" />"
     end
