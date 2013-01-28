@@ -8,7 +8,7 @@ module Ress
 
     def self.included(base)
       base.extend ClassMethods
-      # base.helper_method :can?, :cannot?, :current_ability
+      base.helper_method :canonical_request?
       base.before_filter :prepend_category_view_path
     end
 
@@ -16,6 +16,10 @@ module Ress
       Ress.categories.each do |cat|
         prepend_view_path(cat.view_path) if cat.matches?(request.subdomain)
       end
+    end
+
+    def canonical_request?
+      Ress.categories.canonical_version.matches?(request.subdomain)
     end
 
   end

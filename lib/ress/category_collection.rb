@@ -5,8 +5,15 @@ module Ress
 
     def_delegators :categories, :size, :each, :last, :map
 
+    attr_reader :canonical_version
+
     def initialize
-      @categories = []
+      @alternate_versions = []
+      @canonical_version  = CanonicalVersion.new
+    end
+
+    def set_cannonical(options = {})
+      @canonical_version = CanonicalVersion.new(options)
     end
 
     def add_alternate(options)
@@ -25,7 +32,7 @@ module Ress
     private
 
       def categories
-        @categories
+        @alternate_versions
       end
 
   end

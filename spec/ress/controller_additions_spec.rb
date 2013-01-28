@@ -1,4 +1,4 @@
-require_relative '../../lib/ress/controller_additions'
+require_relative '../../lib/ress'
 
 class ActionControllerStub
 
@@ -11,6 +11,8 @@ class ActionControllerStub
   def self.action
     @@action
   end
+
+  def self.helper_method(*splat) ; end
 
 end
 
@@ -47,6 +49,22 @@ describe Ress::ControllerAdditions do
 
       controller.should_not_receive(:prepend_view_path)
       controller.prepend_category_view_path
+    end
+
+  end
+
+  describe '#canonical_request?' do
+
+    let(:controller) { ActionControllerStub.new }
+
+    before do
+      request = stub(:subdomain => 'foo')
+      controller.stub(:request => request)
+    end
+
+    it 'returns true if the request subdomain matches the canonical' do
+      Ress.categories.canonical_version.stub(:matches? => true)
+      controller.canonical_request?.should be_true
     end
 
   end
