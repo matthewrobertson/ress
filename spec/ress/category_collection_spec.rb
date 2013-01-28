@@ -18,7 +18,7 @@ describe Ress::CategoryCollection do
       collection.last.name.should == 'stuff'
     end
 
-    it 'passes options tot he category' do
+    it 'passes options to the category' do
       collection.add_alternate({:name => 'stuff', :media_query => 'foo', :subdomain => 'm'})
       collection.last.subdomain.should == 'm'
     end

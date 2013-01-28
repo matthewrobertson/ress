@@ -12,27 +12,24 @@ module Ress
       if self.subdomain
         self.subdomain == subdomain.split('.').first
       else
-        subdomain.blank?
+        subdomain.empty?
       end
-    end
-
-    def view_path
-      @view_path || default_view_path
     end
 
     # Create a tag of this format:
     #  `<link rel="canonical" href="http://www.example.com/page-1" >`
-    def link_tag(protocol, base_url, view)
-      view.tag :link, :rel => 'canonical', :href => href(protocol, base_url)
+    def link_tag(protocol, fullpath, subdomain, view)
+      view.tag :link, :rel => 'canonical', :href => href(protocol, fullpath, subdomain)
     end
 
     private
 
-      def href(protocol, base_url)
-        if subdomain
-          "#{protocol}#{subdomain}.#{base_url}"
+      def href(protocol, fullpath, subdomain)
+        fullpath = fullpath[(subdomain.length + 1)..-1] unless subdomain.empty?
+        if self.subdomain
+          "#{protocol}#{self.subdomain}.#{fullpath}"
         else
-          "#{protocol}#{base_url}"
+          "#{protocol}#{fullpath}"
         end
       end
 

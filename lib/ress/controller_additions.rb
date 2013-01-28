@@ -13,13 +13,13 @@ module Ress
     end
 
     def prepend_category_view_path
-      Ress.categories.each do |cat|
+      Ress.alternate_versions.each do |cat|
         prepend_view_path(cat.view_path) if cat.matches?(request.subdomain)
       end
     end
 
     def canonical_request?
-      Ress.categories.canonical_version.matches?(request.subdomain)
+      Ress.canonical_version.matches?(request.subdomain)
     end
 
   end

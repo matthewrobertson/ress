@@ -3,16 +3,16 @@ module Ress
   class CategoryCollection
     extend Forwardable
 
-    def_delegators :categories, :size, :each, :last, :map
+    def_delegators :categories, :size, :each, :last
 
-    attr_reader :canonical_version
+    attr_reader :canonical_version, :alternate_versions
 
     def initialize
       @alternate_versions = []
       @canonical_version  = CanonicalVersion.new
     end
 
-    def set_cannonical(options = {})
+    def set_canonical(options = {})
       @canonical_version = CanonicalVersion.new(options)
     end
 

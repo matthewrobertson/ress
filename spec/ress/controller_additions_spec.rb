@@ -35,17 +35,17 @@ describe Ress::ControllerAdditions do
       controller.request = request
     end
 
-    it 'prepends view paths of matching categories' do
+    it 'prepends view paths of matching alternate_versions' do
       category = stub('category', :matches? => true, :view_path => 'foo/bar')
-      Ress.stub(:categories => [category])
+      Ress.stub(:alternate_versions => [category])
 
       controller.should_receive(:prepend_view_path).with('foo/bar')
       controller.prepend_category_view_path
     end
 
-    it 'does not prepend view paths of categories that dont match' do
+    it 'does not prepend view paths of alternate_versions that dont match' do
       category = stub('category', :matches? => false, :view_path => 'foo/bar')
-      Ress.stub(:categories => [category])
+      Ress.stub(:alternate_versions => [category])
 
       controller.should_not_receive(:prepend_view_path)
       controller.prepend_category_view_path
@@ -63,7 +63,7 @@ describe Ress::ControllerAdditions do
     end
 
     it 'returns true if the request subdomain matches the canonical' do
-      Ress.categories.canonical_version.stub(:matches? => true)
+      Ress.canonical_version.stub(:matches? => true)
       controller.canonical_request?.should be_true
     end
 

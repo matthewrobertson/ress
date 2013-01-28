@@ -14,12 +14,20 @@ end
 module Ress
   extend self
 
-  def categories
+  def category_collection
     @categories ||= CategoryCollection.new
   end
 
+  def canonical_version
+    category_collection.canonical_version
+  end
+
+  def alternate_versions
+    category_collection.alternate_versions
+  end
+
   def configure
-    yield(categories)
+    yield(category_collection)
   end
 
 end

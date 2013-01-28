@@ -10,4 +10,29 @@ describe Ress do
 
   end
 
+  describe '.canonical_version' do
+
+    it 'returns a Ress::CanonicalVersion' do
+      Ress.canonical_version.should be_a(Ress::CanonicalVersion)
+    end
+
+    it 'can be altered through Ress.configure' do
+      Ress.configure { |r| r.set_canonical :subdomain => 'foo' }
+      Ress.canonical_version.subdomain.should == 'foo'
+    end
+
+  end
+
+  describe '.alternate_versions' do
+
+    it 'can be altered through Ress.configure' do
+      expect {
+        Ress.configure { |r| r.add_alternate :name => 'foo' }
+      }.to change {
+        Ress.alternate_versions.length
+      }.by(1)
+    end
+
+  end
+
 end
