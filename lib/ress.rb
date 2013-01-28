@@ -6,6 +6,8 @@ require "ress/category_collection"
 require "ress/controller_additions"
 require "ress/view_helpers"
 
+require "ress/engine"
+
 module Ress
   extend self
 
