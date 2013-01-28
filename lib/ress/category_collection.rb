@@ -17,7 +17,7 @@ module Ress
     end
 
     def add_alternate(options)
-      category = DeviceCategory.new(options.delete(:name), options.delete(:media_type), options)
+      category = AlternateVersion.new(options.delete(:name), options.delete(:media_type), options)
       categories << category
     end
 

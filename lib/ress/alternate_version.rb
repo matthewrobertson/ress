@@ -1,6 +1,6 @@
 module Ress
 
-  class DeviceCategory
+  class AlternateVersion
 
     attr_reader :name, :subdomain, :media_query
 

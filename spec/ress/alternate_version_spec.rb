@@ -1,16 +1,16 @@
-require_relative '../../lib/ress/device_category'
+require_relative '../../lib/ress/alternate_version'
 
-describe Ress::DeviceCategory do
+describe Ress::AlternateVersion do
 
   describe '#subdomain' do
 
     it 'defaults to the name of the category' do
-      category = Ress::DeviceCategory.new('mobile', 'some media query')
+      category = Ress::AlternateVersion.new('mobile', 'some media query')
       category.subdomain.should == 'mobile'
     end
 
     it 'can be overridden by an optional parameter' do
-      category = Ress::DeviceCategory.new('mobile', 'some media query', :subdomain => 'foo')
+      category = Ress::AlternateVersion.new('mobile', 'some media query', :subdomain => 'foo')
       category.subdomain.should == 'foo'
     end
 
@@ -19,12 +19,12 @@ describe Ress::DeviceCategory do
   describe '#view_path' do
 
     it 'defaults to something' do
-      category = Ress::DeviceCategory.new('mobile', 'some media query')
+      category = Ress::AlternateVersion.new('mobile', 'some media query')
       category.view_path.should == 'app/mobile_views'
     end
 
     it 'can be overridden by an optional parameter' do
-      category = Ress::DeviceCategory.new('mobile', 'some media query', :view_path => 'foo')
+      category = Ress::AlternateVersion.new('mobile', 'some media query', :view_path => 'foo')
       category.view_path.should == 'foo'
     end
 
@@ -32,7 +32,7 @@ describe Ress::DeviceCategory do
 
   describe '#matches?' do
 
-    let(:category) { Ress::DeviceCategory.new('mobile', 'some media query', :subdomain => 'foo') }
+    let(:category) { Ress::AlternateVersion.new('mobile', 'some media query', :subdomain => 'foo') }
 
     it 'returns true if the subdomain matches' do
       category.matches?('foo').should be_true
@@ -58,7 +58,7 @@ describe Ress::DeviceCategory do
 
   describe '#link_tag' do
 
-    let(:category) { Ress::DeviceCategory.new('mobile', 'some media query') }
+    let(:category) { Ress::AlternateVersion.new('mobile', 'some media query') }
     let(:view) { stub('view') }
 
     def link_tag(base_url, protocol, view)

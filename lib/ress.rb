@@ -1,7 +1,7 @@
 require "action_view"
 
 require "ress/version"
-require "ress/device_category"
+require "ress/alternate_version"
 require "ress/canonical_version"
 require "ress/category_collection"
 require "ress/controller_additions"

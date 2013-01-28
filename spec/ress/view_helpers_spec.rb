@@ -7,7 +7,7 @@ describe ActionView::Base do
 
     let(:view) { ActionView::Base.new }
     let(:request) { stub('request', :protocol => 'http://', :host_with_port => 'foo.com', :fullpath => '/bar', :subdomain => 'x') }
-    let(:category) { Ress::DeviceCategory.new('m', 'stuff') }
+    let(:category) { Ress::AlternateVersion.new('m', 'stuff') }
 
     before do
       view.stub(:request => request)
