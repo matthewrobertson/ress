@@ -2,10 +2,9 @@ require_relative '../../lib/ress'
 
 describe Ress::CategoryCollection do
 
+  let(:collection) { Ress::CategoryCollection.new }
 
   describe '#add_alternate' do
-
-    let(:collection) { Ress::CategoryCollection.new }
 
     it 'adds an item to the alternate_versions' do
       expect {
@@ -21,6 +20,19 @@ describe Ress::CategoryCollection do
     it 'passes options to the alternate_version' do
       collection.add_alternate({:name => 'stuff', :media_query => 'foo', :subdomain => 'm'})
       collection.alternate_versions.last.subdomain.should == 'm'
+    end
+
+  end
+
+  describe 'canonical_version' do
+
+    it 'defaults to a canonical_version with no subdomain' do
+      collection.canonical_version.subdomain.should be_false
+    end
+
+    it 'can be altered through set_canonical' do
+      collection.set_canonical :subdomain => 'foo'
+      collection.canonical_version.subdomain.should == 'foo'
     end
 
   end
