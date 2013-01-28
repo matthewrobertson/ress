@@ -1,3 +1,7 @@
+/**
+ *  This file has been adapted from device.js:
+ *    https://github.com/borismus/device.js
+ */
 (function(exports) {
 
   var MQ_TOUCH = /\(touch-enabled: (.*?)\)/;

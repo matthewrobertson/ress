@@ -1,0 +1,19 @@
+===============================================================================
+
+There is some setup you must do manually if you haven't yet:
+
+  1. Include the Javascript files in your application.js:
+
+    //= require ress
+
+  2. Call Ress in the head of your layout to render out the version annotations.
+     For example:
+
+    <head>
+      <title>My App</title>
+      <%= stylesheet_link_tag "application", :media => "all" %>
+      <%= ress_link_tags %>
+      <%= csrf_meta_tags %>
+    </head>
+
+===============================================================================
