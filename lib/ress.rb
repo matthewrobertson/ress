@@ -6,7 +6,9 @@ require "ress/category_collection"
 require "ress/controller_additions"
 require "ress/view_helpers"
 
-require "ress/engine"
+if defined? Rails
+  require "ress/engine"
+end
 
 module Ress
   extend self
