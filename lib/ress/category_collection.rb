@@ -18,14 +18,6 @@ module Ress
       categories << category
     end
 
-    def base_host_name(host_with_port)
-      if categories.any? { |cat| cat.matches?(host_with_port) }
-        host_with_port.gsub(/^[^\.]+\./, '')
-      else
-        host_with_port
-      end
-    end
-
     private
 
       def categories

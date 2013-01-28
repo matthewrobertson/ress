@@ -25,20 +25,4 @@ describe Ress::CategoryCollection do
 
   end
 
-  describe '#base_host_name' do
-
-    let(:collection) { Ress::CategoryCollection.new }
-
-    it 'returns the paramter if there are no matching categories' do
-      collection.base_host_name('foo.stuff').should == 'foo.stuff'
-    end
-
-    it 'drops the first subdomain if there is a matching category' do
-      collection.add_alternate(:name => 'foo', :media_query => 'foo')
-      collection.base_host_name('foo.stuff.baz').should == 'stuff.baz'
-    end
-
-  end
-
-
 end
