@@ -9,7 +9,7 @@ module Ress
       @categories = []
     end
 
-    def register_category(options)
+    def add_alternate(options)
       category = DeviceCategory.new(options.delete(:name), options.delete(:media_type), options)
       categories << category
     end

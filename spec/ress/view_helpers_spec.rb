@@ -19,7 +19,7 @@ describe ActionView::Base do
 
     it 'generates the link tags when there is on category' do
       Ress.configure do |r|
-        r.register_category :name => 'm', :media_type => 'stuff'
+        r.add_alternate :name => 'm', :media_type => 'stuff'
       end
       view.ress_link_tags.should ==
         "<link href=\"http://m.foo.com/bar\" id=\"m\" media=\"stuff\" rel=\"alternate\" />"
