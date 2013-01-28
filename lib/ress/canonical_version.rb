@@ -10,7 +10,7 @@ module Ress
 
     def matches?(subdomain)
       if self.subdomain
-        self.subdomain == subdomain.split('.').first
+        self.subdomain == subdomain
       else
         subdomain.empty?
       end
