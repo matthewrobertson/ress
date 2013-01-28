@@ -1,9 +1,6 @@
 module Ress
 
   class CategoryCollection
-    extend Forwardable
-
-    def_delegators :categories, :size, :each, :last
 
     attr_reader :canonical_version, :alternate_versions
 
