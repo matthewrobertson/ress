@@ -18,7 +18,7 @@ describe Ress::AlternateVersion do
 
   describe '#view_path' do
 
-    it 'defaults to something' do
+    it 'defaults to app/[NAME]_views' do
       category = Ress::AlternateVersion.new('mobile', 'some media query')
       category.view_path.should == 'app/mobile_views'
     end

@@ -2,7 +2,7 @@ module Ress
 
   class AlternateVersion
 
-    attr_reader :name, :subdomain, :media_query
+    attr_reader :name, :subdomain, :media_query, :view_path
 
     def initialize(name, media_query,  options = {})
       @name        = name
@@ -13,10 +13,6 @@ module Ress
 
     def matches?(subdomain)
       self.subdomain == subdomain.split('.').first
-    end
-
-    def view_path
-      @view_path || default_view_path
     end
 
     # Create a tag of this format:
