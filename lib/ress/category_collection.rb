@@ -14,15 +14,9 @@ module Ress
     end
 
     def add_alternate(options)
-      category = AlternateVersion.new(options.delete(:name), options.delete(:media_type), options)
-      categories << category
+      version = AlternateVersion.new(options.delete(:name), options.delete(:media_type), options)
+      alternate_versions << version
     end
-
-    private
-
-      def categories
-        @alternate_versions
-      end
 
   end
 
