@@ -19,19 +19,17 @@ module Ress
     # Create a tag of this format:
     #  `<link rel="canonical" href="http://www.example.com/page-1" >`
     def link_tag(protocol, fullpath, subdomain, view)
-      view.tag :link, :rel => 'canonical', :href => href(protocol, fullpath, subdomain)
+      view.tag :link, :rel => 'canonical', :href => url(protocol, fullpath, subdomain)
     end
 
-    private
-
-      def href(protocol, fullpath, subdomain)
-        fullpath = fullpath[(subdomain.length + 1)..-1] unless subdomain.empty?
-        if self.subdomain
-          "#{protocol}#{self.subdomain}.#{fullpath}"
-        else
-          "#{protocol}#{fullpath}"
-        end
+    def url(protocol, fullpath, subdomain)
+      fullpath = fullpath[(subdomain.length + 1)..-1] unless subdomain.empty?
+      if self.subdomain
+        "#{protocol}#{self.subdomain}.#{fullpath}"
+      else
+        "#{protocol}#{fullpath}"
       end
+    end
 
   end
 

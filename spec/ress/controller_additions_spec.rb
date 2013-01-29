@@ -69,4 +69,29 @@ describe Ress::ControllerAdditions do
 
   end
 
+  describe '#force_canonical_url' do
+
+    let(:controller) { ActionControllerStub.new }
+
+    before do
+      @request = stub({
+        :subdomain => 'foo',
+        :host_with_port => 'foo.bar.com',
+        :protocol => 'http://'
+      })
+      controller.stub(:request => @request)
+    end
+
+    it 'appends params to the current url properly if there are no GET params' do
+      @request.stub(:fullpath => '/some_place')
+      controller.force_canonical_url.should == 'http://bar.com/some_place?force=1'
+    end
+
+    it 'appends params to the current url properly when there are GET params' do
+      @request.stub(:fullpath => '/some_place?param=something')
+      controller.force_canonical_url.should == 'http://bar.com/some_place?param=something&force=1'
+    end
+
+  end
+
 end
