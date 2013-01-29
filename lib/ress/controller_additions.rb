@@ -12,7 +12,7 @@ module Ress
 
     def set_force_canonical_cookie
       if params[:force_canonical]
-         cookies[:force_canonical] = 1
+         cookies[:force_canonical] = 'true'
       end
     end
 

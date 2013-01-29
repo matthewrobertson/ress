@@ -52,7 +52,7 @@
       this.readCookie(FORCE_COOKIE) === 'true';
   };
 
-  VersionManager.prototype.readCookie = function() {
+  VersionManager.prototype.readCookie = function(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
     for(var i=0;i < ca.length;i++) {
