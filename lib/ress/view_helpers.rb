@@ -2,7 +2,7 @@ module Ress
 
   module ViewHelpers
 
-    def ress_link_tags
+    def ress_annotation_tags
       path = "#{request.host_with_port}#{request.fullpath}"
       if canonical_request?
         Ress.alternate_versions.map do |category|

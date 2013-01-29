@@ -12,7 +12,7 @@ There is some setup you must do manually if you haven't yet:
     <head>
       <title>My App</title>
       <%= stylesheet_link_tag "application", :media => "all" %>
-      <%= ress_link_tags %>
+      <%= ress_annotation_tags %>
       <%= csrf_meta_tags %>
     </head>
 
