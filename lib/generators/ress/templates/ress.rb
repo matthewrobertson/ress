@@ -14,7 +14,7 @@ Ress.configure do |config|
 
   # == Modernizr
   #
-  # There a couple of Modernizr features that must be
+  # There are a couple of Modernizr features that must be
   # included in order for Ress's javascript feature detection
   # to function. If you are not already using Modernizr in
   # your app you can automatically include a build that has

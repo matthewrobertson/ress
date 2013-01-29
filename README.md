@@ -114,9 +114,12 @@ URL of the tablet site, you can load `http://tablet.foo.com/?force=1`.
 
 ### Dependencies
 
-TODO: Document Modernizr Dependency
-
-Touch Events and Media Queries
+There are a couple of Modernizr features that must be included in order for
+Ress's javascript feature detection to function. If you are not already
+using Modernizr in your application you can automatically include a build that
+has been packaged with the gem by setting `config.include_modernizr = true` in
+`config/initializers/ress.rb`. If you include your own build (recommended),
+make sure that it includes "Touch Events" and "Media Queries", eg:
 
 http://modernizr.com/download/#-touch-mq-teststyles-prefixes
 
@@ -131,7 +134,7 @@ ress.js script and do your own server-side UA-based pushing.
 
 ## Browser support
 
-Device.js should work in all browsers that support
+The feature detection javascript should work in all browsers that support
 `document.querySelectorAll`. Notably, this excludes IE7. If you want it
 to work in IE7 and below, please include a [polyfill](https://gist.github.com/2724353).
 
