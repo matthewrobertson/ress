@@ -14,7 +14,7 @@ module Ress
     end
 
     def add_alternate(options)
-      version = AlternateVersion.new(options.delete(:name), options.delete(:media_type), options)
+      version = AlternateVersion.new(options.delete(:name), options.delete(:media), options)
       alternate_versions << version
     end
 

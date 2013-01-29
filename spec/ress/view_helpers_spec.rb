@@ -35,7 +35,7 @@ describe ActionView::Base do
       it 'generates the link tags when there is one category' do
 
         Ress.configure do |r|
-          r.add_alternate :name => 'm', :media_type => 'stuff'
+          r.add_alternate :name => 'm', :media => 'stuff'
         end
 
         view.ress_annotation_tags.should ==
