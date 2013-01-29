@@ -6,10 +6,10 @@ module Ress
     def self.included(base)
       base.helper_method :canonical_request?
       base.helper_method :force_canonical_url
-      base.before_filter :prepend_category_view_path
+      base.before_filter :prepend_alternate_view_path
     end
 
-    def prepend_category_view_path
+    def prepend_alternate_view_path
       Ress.alternate_versions.each do |cat|
         prepend_view_path(cat.view_path) if cat.matches?(request.subdomain)
       end

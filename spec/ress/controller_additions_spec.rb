@@ -23,10 +23,10 @@ end
 describe Ress::ControllerAdditions do
 
   it 'adds a before_filter to all actions when it is included' do
-    ActionControllerStub.action.should == :prepend_category_view_path
+    ActionControllerStub.action.should == :prepend_alternate_view_path
   end
 
-  describe '#prepend_category_view_path' do
+  describe '#prepend_alternate_view_path' do
 
     let(:controller) { ActionControllerStub.new }
 
@@ -40,7 +40,7 @@ describe Ress::ControllerAdditions do
       Ress.stub(:alternate_versions => [category])
 
       controller.should_receive(:prepend_view_path).with('foo/bar')
-      controller.prepend_category_view_path
+      controller.prepend_alternate_view_path
     end
 
     it 'does not prepend view paths of alternate_versions that dont match' do
@@ -48,7 +48,7 @@ describe Ress::ControllerAdditions do
       Ress.stub(:alternate_versions => [category])
 
       controller.should_not_receive(:prepend_view_path)
-      controller.prepend_category_view_path
+      controller.prepend_alternate_view_path
     end
 
   end
