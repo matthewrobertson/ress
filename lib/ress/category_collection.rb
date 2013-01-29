@@ -2,6 +2,7 @@ module Ress
 
   class CategoryCollection
 
+    attr_accessor :include_modernizr
     attr_reader :canonical_version, :alternate_versions
 
     def initialize

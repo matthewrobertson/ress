@@ -37,4 +37,16 @@ describe Ress::CategoryCollection do
 
   end
 
+  describe '#include_modernizr' do
+
+    it 'is false by default' do
+      collection.include_modernizr.should be_false
+    end
+
+    it 'can be set' do
+      collection.include_modernizr = true
+      collection.include_modernizr.should be_true
+    end
+  end
+
 end
