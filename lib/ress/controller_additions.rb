@@ -6,7 +6,14 @@ module Ress
     def self.included(base)
       base.helper_method :canonical_request?
       base.helper_method :force_canonical_url
+      base.before_filter :set_force_canonical_cookie
       base.before_filter :prepend_alternate_view_path
+    end
+
+    def set_force_canonical_cookie
+      if params[:force_canonical]
+         cookies[:force_canonical] = 1
+      end
     end
 
     def prepend_alternate_view_path
@@ -24,7 +31,7 @@ module Ress
       url = Ress.canonical_version.url(request.protocol, path, request.subdomain)
       sep = url.include?('?') ? '&' : '?'
 
-      "#{url}#{sep}force=1"
+      "#{url}#{sep}force_canonical=1"
     end
 
   end

@@ -5,7 +5,7 @@
 (function(exports) {
 
   var MQ_TOUCH = /\(touch-enabled: (.*?)\)/;
-  var FORCE_COOKIE = 'force-cannonical';
+  var FORCE_COOKIE = 'force_canonical';
 
  /**
   * Class responsible for deciding which version of the application to
