@@ -1,8 +1,7 @@
 # Ress
 
-Ress implements a set of best practices that allow you to progressively
-enhance you Rails application to improve the user experience on mobile
-devices.
+A system for building mobile optimized Rails applications using semantic,
+media query-based device detection and server side progressive enhancement.
 
 ## Background
 
@@ -40,15 +39,13 @@ as documented by Google
 
 ### Feature Detection
 
-semantic, media query-based device detection
-
 Device.js will read all of the version links in your markup, and
 redirect you to the appropriate URL that serves the correct version of
 your webapp.
 
-When a request comes into your site, ress runs a some javascript if there is an
-alternate version available that matches the client. If there is, the user is
-redirected to that site.
+When a request comes into your site, ress runs a some javascript to determine
+if there is an alternate version available that matches the client. If there
+is, the user is redirected to the url for that version.
 
 ### Server Side Components
 
@@ -117,8 +114,7 @@ URL of the tablet site, you can load `http://tablet.foo.com/?force=1`.
 
 ### Dependencies
 
-TODO: Modernizr
-
+TODO: Document Modernizr Dependency
 
 ## Performance considerations
 
@@ -127,7 +123,7 @@ redirection to point users to the right version of your webapp. Client-side
 redirection can have a performance overhead (though I haven't measured it).
 If you find this is true, you can keep your DOM the same, still using the
 SEO-friendly `<link rel="alternate">` tags, but simply remove the
-device.js script and do your own server-side UA-based pushing.
+ress.js script and do your own server-side UA-based pushing.
 
 ## Browser support
 
@@ -136,9 +132,6 @@ Device.js should work in all browsers that support
 to work in IE7 and below, please include a [polyfill](https://gist.github.com/2724353).
 
 ## Contributing
-
-The goal of Ress is to provide a SEO-compatible best practice and
-starting point for reliable cross-device, cross-browser redirection.
 
 Given how many browsers and devices we have these days, there are bound
 to be bugs. If you find them, please report them and (ideally) fix them
