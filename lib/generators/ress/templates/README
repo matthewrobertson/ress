@@ -16,4 +16,8 @@ There is some setup you must do manually if you haven't yet:
       <%= csrf_meta_tags %>
     </head>
 
+  3. Make sure you have a meta viewport tag in your head, for example:
+
+     <meta name="viewport" content="user-scalable=no,width=device-width">
+
 ===============================================================================
