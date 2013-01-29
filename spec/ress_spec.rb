@@ -35,4 +35,20 @@ describe Ress do
 
   end
 
+  describe '.include_modernizr?' do
+
+    it 'defaults to false' do
+      Ress.include_modernizr?.should be_false
+    end
+
+    it 'can be altered through Ress.configure' do
+      Ress.configure { |r| r.include_modernizr = true }
+      Ress.include_modernizr?.should be_true
+
+      Ress.configure { |r| r.include_modernizr = false }
+      Ress.include_modernizr?.should be_false
+    end
+
+  end
+
 end

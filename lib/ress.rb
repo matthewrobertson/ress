@@ -26,6 +26,10 @@ module Ress
     category_collection.alternate_versions
   end
 
+  def include_modernizr?
+    category_collection.include_modernizr
+  end
+
   def configure
     yield(category_collection)
   end

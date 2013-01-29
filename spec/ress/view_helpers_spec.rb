@@ -10,7 +10,10 @@ describe ActionView::Base do
     let(:category) { Ress::AlternateVersion.new('m', 'stuff') }
 
     before do
-      view.stub(:request => request)
+      view.stub(
+        :request => request,
+        :javascript_include_tag => '<script src="/assets/ress_modernizr_build.js" type="text/javascript"></script>'.html_safe
+      )
     end
 
     context 'alternate request' do
@@ -19,6 +22,12 @@ describe ActionView::Base do
 
       it 'returns the canonical link' do
         view.ress_annotation_tags.should == "<link href=\"http://foo.com/bar\" rel=\"canonical\" />"
+      end
+
+      it 'adds a script tag for Modernizr if required' do
+        Ress.stub(:include_modernizr? => true)
+        view.ress_annotation_tags.should ==
+        "<link href=\"http://foo.com/bar\" rel=\"canonical\" /><script src=\"/assets/ress_modernizr_build.js\" type=\"text/javascript\"></script>"
       end
 
     end

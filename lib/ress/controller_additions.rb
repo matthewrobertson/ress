@@ -2,12 +2,8 @@ module Ress
 
   # This module is automatically included into all controllers.
   module ControllerAdditions
-    module ClassMethods
-      # class methods go here
-    end
 
     def self.included(base)
-      base.extend ClassMethods
       base.helper_method :canonical_request?
       base.helper_method :force_canonical_url
       base.before_filter :prepend_category_view_path
