@@ -116,6 +116,10 @@ URL of the tablet site, you can load `http://tablet.foo.com/?force=1`.
 
 TODO: Document Modernizr Dependency
 
+Touch Events and Media Queries
+
+http://modernizr.com/download/#-touch-mq-teststyles-prefixes
+
 ## Performance considerations
 
 The javascript included by Ress does some checks and will use client-side
