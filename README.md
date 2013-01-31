@@ -16,7 +16,7 @@ for which devices should be redirected to which version.
 ### HTML Annotations
 
 When you register alternate mobile versions of your website, Ress adds annotations
-to the `<head>` of your document that describes where these pages are located and
+to the `<head>` of your document that describe where these pages are located and
 which devices should be redirected to them.
 
 For example, a typical alternate version for a mobile site might include a tag
@@ -34,18 +34,14 @@ version:
 ```
 
 These annotations conform to SEO best practices for mobile optimized websites
-as documented by Google
-[here](https://developers.google.com/webmasters/smartphone-sites/details).
+[as documented by Google](https://developers.google.com/webmasters/smartphone-sites/details).
 
 ### Feature Detection
 
-Device.js will read all of the version links in your markup, and
-redirect you to the appropriate URL that serves the correct version of
-your webapp.
-
-When a request comes into your site, ress runs a some javascript to determine
-if there is an alternate version available that matches the client. If there
-is, the user is redirected to the url for that version.
+When a request comes into your site, the javascript included with ress will parse
+all of the `[rel="alternate"]` links in your markup, and evalute their media queries
+to determine if there is an alternate version available that matches the client.
+If there is, the user is redirected to the url for that version.
 
 ### Server Side Components
 
