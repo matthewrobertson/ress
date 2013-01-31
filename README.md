@@ -155,8 +155,8 @@ may want to look at the following articles for more info:
 side feature direction and the main inspiration for this gem. Boris has also provided
 [a good write up about it](http://www.html5rocks.com/en/mobile/cross-device/) on
 http://www.html5rocks.com/
-- [Google's documentation](https://developers.google.com/webmasters/smartphone-sites/details)
-about building Mobile Optimized web apps
+- [Building Smartphone-Optimized Websites](https://developers.google.com/webmasters/smartphone-sites/details) - Google's
+recommendations and best practices for building Mobile Optimized web apps
 - [RESS: Responsive Design + Server Side Components](http://www.lukew.com/ff/entry.asp?1392) - an
 article by Luke Wroblewski about combining Responsive Design and Server Side Components (the
 inspiration for the name RESS).
