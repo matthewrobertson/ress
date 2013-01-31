@@ -126,7 +126,7 @@ redirection to point users to the right version of your webapp. Client-side
 redirection can have a performance overhead (though I haven't measured it).
 If you find this is true, you can keep your DOM the same, still using the
 SEO-friendly `<link rel="alternate">` tags, but simply remove the
-ress.js script and do your own server-side UA-based pushing.
+ress.js script and do your own server-side UA-based redirection.
 
 ## Browser support
 
@@ -145,3 +145,19 @@ in a pull request.
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Resources
+
+Ress is the compilation of a few different ideas packaged up for Ruby on Rails. You
+may want to look at the following articles for more info:
+
+- [devicejs](https://github.com/borismus/device.js) -  a javascript library for client
+side feature direction and the main inspiration for this gem. Boris has also provided
+[a good write up about it](http://www.html5rocks.com/en/mobile/cross-device/) on
+http://www.html5rocks.com/
+- [Google's documentation](https://developers.google.com/webmasters/smartphone-sites/details)
+about building Mobile Optimized web apps
+- [RESS: Responsive Design + Server Side Components](http://www.lukew.com/ff/entry.asp?1392) - an
+article by Luke Wroblewski about combining Responsive Design and Server Side Components (the
+inspiration for the name RESS).
+
