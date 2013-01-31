@@ -94,13 +94,13 @@ available are all documented in the [comments of that file](https://github.com/m
 You can manually override the version detector javascript and allow mobile
 clients to visit the canonical version of the app by passing in a the GET
 url parameter `force_canonical=1`. This sets a session cookie in a `before_filter`
-that stops the version detection scipt from redirecting users so it only has to be
+that stops the version detection scipt from redirecting users, so it only has to be
 done once per session. Ress includes a helper / controller method `force_canonical` that returns
 a link back to the canonical version of the current page with this query param appended.
 For, example you may include something like this in your `<footer>` to let mobile users
 access the canonical site.
 
-```html
+```erb
 <!-- Let mobile devices access the canonical site -->
 <footer>
   <% unless canonical_request?  %>
