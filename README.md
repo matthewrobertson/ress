@@ -45,7 +45,7 @@ If there is, the user is redirected to the url for that version.
 
 ### Server Side Components
 
-Ress allows you to customize how your Rails application responds to requests in
+Ress allows you to customize how your Rails application responds to mobile requests in
 two ways:
 
 1. It adds controller and helper methods to detect which version of your site has
@@ -60,7 +60,7 @@ been requested. This is useful for small tweeks in html or behaviour, eg:
 ```
 
 2. It prepends a view path for each alternate version of your site, so that you can
-override which templates or partials are rendered for certain requests. For example if
+override the templates or partials that are rendered for certain requests. For example if
 you want to render a different html form for creating users on the mobile version of your
 site you could create `app/mobile_views/users/_form.html.erb` and Ress would have Rails
 select that template over `app/views/users/_form.html.erb` when a request comes in to the
@@ -77,7 +77,7 @@ And then execute:
 
     $ bundle install
 
-Run the installation generator:
+Run the generator:
 
     $ rails g ress:install
 
