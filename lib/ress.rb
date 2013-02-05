@@ -1,6 +1,7 @@
 require "action_view"
 
 require "ress/version"
+require "ress/subdomain"
 require "ress/alternate_version"
 require "ress/canonical_version"
 require "ress/category_collection"

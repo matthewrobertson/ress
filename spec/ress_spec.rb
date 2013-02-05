@@ -18,7 +18,7 @@ describe Ress do
 
     it 'can be altered through Ress.configure' do
       Ress.configure { |r| r.set_canonical :subdomain => 'foo' }
-      Ress.canonical_version.subdomain.should == 'foo'
+      Ress.canonical_version.matches?('foo').should be_true
     end
 
   end
