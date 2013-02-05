@@ -62,10 +62,16 @@ module Ress
       end
 
       def url(protocol, fullpath, subdomain)
-        fullpath = fullpath[(subdomain.length + 1)..-1]
+
+        fullpath = fullpath[(subdomain.length + 1)..-1] unless subdomain.empty?
         begin
           if matches?(subdomain)
-            return "#{protocol}#{subdomain}.#{fullpath}"
+            if subdomain.empty?
+              return "#{protocol}#{fullpath}"
+            else
+              return "#{protocol}#{subdomain}.#{fullpath}"
+            end
+
           end
           subdomain = subdomain.split('.')[1..-1].join('.')
         end while(!subdomain.empty?)
