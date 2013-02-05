@@ -63,11 +63,9 @@ module Ress
 
       def url(protocol, fullpath, subdomain)
         fullpath = fullpath[(subdomain.length + 1)..-1] unless subdomain.empty?
-        subdomains = subdomain.split('.')
         begin
-          subdomain = subdomains.join('.')
           return build_url(protocol, subdomain, fullpath) if matches?(subdomain)
-        end while(subdomains = subdomains[1..-1])
+        end while( subdomain.slice!(/^[^\.]+\.?/) )
       end
 
       private
