@@ -108,10 +108,10 @@ describe Ress::Subdomain do
       end
 
       it 'can handle empty subdomains' do
-        subdomain = Ress::Subdomain::RegexpSubdomain.new(/^(?!(m|tablet)\.).*$/)
+        subdomain = Ress::Subdomain::RegexpSubdomain.new(/^(?!(m|tablet)).*$/)
         subdomain.matches?('').should be_true
-        subdomain.url('http://', 'somewhere.com/some/stuff', '').should ==
-        'http://somewhere.com/some/stuff'
+        subdomain.url('http://', 'somewhere.com/some/stuff', '').should eq 'http://somewhere.com/some/stuff'
+        subdomain.url('http://', 'm.somewhere.com/some/stuff', 'm').should eq 'http://somewhere.com/some/stuff'
       end
 
     end

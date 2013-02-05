@@ -13,7 +13,6 @@ module Ress
     # Create a tag of this format:
     #  `<link rel="canonical" href="http://www.example.com/page-1" >`
     def link_tag(protocol, fullpath, req_subdomain, view)
-
       view.tag :link, :rel => 'canonical', :href => url(protocol, fullpath, req_subdomain)
     end
 
