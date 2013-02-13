@@ -5,7 +5,7 @@ describe Ress do
   describe '.configure' do
 
     it 'yields the default category collection' do
-      Ress.configure { |r| r.should be_a(Ress::CategoryCollection) }
+      Ress.configure { |r| r.should be_a(Ress::Config) }
     end
 
   end

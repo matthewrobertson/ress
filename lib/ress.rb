@@ -4,7 +4,7 @@ require "ress/version"
 require "ress/subdomain"
 require "ress/alternate_version"
 require "ress/canonical_version"
-require "ress/category_collection"
+require "ress/config"
 require "ress/controller_additions"
 require "ress/view_helpers"
 
@@ -15,24 +15,24 @@ end
 module Ress
   extend self
 
-  def category_collection
-    @categories ||= CategoryCollection.new
+  def config
+    @categories ||= Config.new
   end
 
   def canonical_version
-    category_collection.canonical_version
+    config.canonical_version
   end
 
   def alternate_versions
-    category_collection.alternate_versions
+    config.alternate_versions
   end
 
   def include_modernizr?
-    category_collection.include_modernizr
+    config.include_modernizr
   end
 
   def configure
-    yield(category_collection)
+    yield(config)
   end
 
 end

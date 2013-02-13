@@ -1,8 +1,8 @@
 require_relative '../../lib/ress'
 
-describe Ress::CategoryCollection do
+describe Ress::Config do
 
-  let(:collection) { Ress::CategoryCollection.new }
+  let(:collection) { Ress::Config.new }
 
   describe '#add_alternate' do
 
