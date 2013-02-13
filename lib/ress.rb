@@ -16,7 +16,7 @@ module Ress
   extend self
 
   def config
-    @categories ||= Config.new
+    @config ||= Config.new
   end
 
   def canonical_version
