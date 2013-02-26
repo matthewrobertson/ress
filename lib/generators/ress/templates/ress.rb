@@ -5,10 +5,16 @@ Ress.configure do |config|
 
   # == Canonical Subdomain
   #
-  # If the cannonical version of your application is served under a subdomain
+  # If the canonical version of your application is served under a subdomain
   # you must set it here:
   #
   # config.set_canonical :subdomain => "subdomain"
+  #
+  # By default, alternate version subdomains are prepended to the canonical url.
+  # If you are using a canonical subdomain and you would like it to be replaced
+  # by the alternate subdomains, set this option to true:
+  #
+  # config.replace_canonical_subdomain = false
 
 
   # == Modernizr
