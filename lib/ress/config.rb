@@ -2,7 +2,7 @@ module Ress
 
   class Config
 
-    attr_accessor :include_modernizr
+    attr_accessor :include_modernizr, :replace_canonical_subdomain
     attr_reader :canonical_version, :alternate_versions
 
     def initialize

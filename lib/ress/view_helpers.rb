@@ -5,6 +5,7 @@ module Ress
     def ress_annotation_tags
       path = "#{request.host_with_port}#{request.fullpath}"
       html = if canonical_request?
+        path.gsub!("#{request.subdomain}.", '') if Ress.replace_canonical_subdomain?
         Ress.alternate_versions.map do |category|
           category.link_tag(request.protocol, path, self)
         end.join

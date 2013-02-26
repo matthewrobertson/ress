@@ -69,6 +69,11 @@ describe Ress::Subdomain do
         'http://foo.bar.com/some/stuff'
       end
 
+      it 'replaces alternate subdomains with the cannonical subdomain' do
+        subdomain.url('http://', 'm.bar.com/some/stuff', 'm').should ==
+        'http://foo.bar.com/some/stuff'
+      end
+
     end
   end
 

@@ -31,6 +31,10 @@ module Ress
     config.include_modernizr
   end
 
+  def replace_canonical_subdomain?
+    config.replace_canonical_subdomain
+  end
+
   def configure
     yield(config)
   end

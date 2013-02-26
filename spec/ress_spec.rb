@@ -51,4 +51,20 @@ describe Ress do
 
   end
 
+  describe '.replace_canonical_subdomain?' do
+
+    it 'defaults to false' do
+      Ress.replace_canonical_subdomain?.should be_false
+    end
+
+    it 'can be altered through Ress.configure' do
+      Ress.configure { |r| r.replace_canonical_subdomain = true }
+      Ress.replace_canonical_subdomain?.should be_true
+
+      Ress.configure { |r| r.replace_canonical_subdomain = false }
+      Ress.replace_canonical_subdomain?.should be_false
+    end
+
+  end
+
 end
