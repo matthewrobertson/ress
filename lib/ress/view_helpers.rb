@@ -2,8 +2,10 @@ module Ress
 
   module ViewHelpers
 
-    def ress_annotation_tags
-      path = "#{request.host_with_port}#{request.fullpath}"
+    def ress_annotation_tags(options={})
+      fullpath = options[:fullpath] || request.fullpath
+
+      path = "#{request.host_with_port}#{fullpath}"
       html = if canonical_request?
         path.gsub!("#{request.subdomain}.", '') if Ress.replace_canonical_subdomain?
         Ress.alternate_versions.map do |category|
