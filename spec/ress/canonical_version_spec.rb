@@ -1,20 +1,6 @@
-require_relative '../../lib/ress/canonical_version'
+require_relative '../../lib/ress'
 
 describe Ress::CanonicalVersion do
-
-  describe '#subdomain' do
-
-    it 'defaults to false' do
-      category = Ress::CanonicalVersion.new
-      category.subdomain.should == false
-    end
-
-    it 'can be overridden by an optional parameter' do
-      category = Ress::CanonicalVersion.new(:subdomain => 'foo')
-      category.subdomain.should == 'foo'
-    end
-
-  end
 
   describe '#matches?' do
 

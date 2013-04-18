@@ -37,18 +37,27 @@ describe ActionView::Base do
       let(:request) { stub('request', :protocol => 'http://', :host_with_port => 'foo.com', :fullpath => '/bar', :subdomain => '') }
       before { view.stub(:canonical_request? => true) }
 
-      it 'returns an empty string if there are no registered categories' do
-        view.ress_annotation_tags.should == ''
+      context 'with no alternate versions' do
+        it 'returns an empty string' do
+          view.ress_annotation_tags.should == ''
+        end
       end
 
-      it 'generates the link tags when there is one category' do
+      context 'with one alternate version' do
+        before(:all) { Ress.configure { |r| r.add_alternate :name => 'm', :media => 'stuff' } }
 
-        Ress.configure do |r|
-          r.add_alternate :name => 'm', :media => 'stuff'
+        it 'generates the link tags when there is one category' do
+          view.ress_annotation_tags.should ==
+            "<link href=\"http://m.foo.com/bar\" id=\"m\" media=\"stuff\" rel=\"alternate\" />"
         end
 
-        view.ress_annotation_tags.should ==
+        it 'replaces the canonical subdomain when configured' do
+          request.stub(:host_with_port => 'www.foo.com', :subdomain => 'www')
+          Ress.stub(:replace_canonical_subdomain? => true )
+          view.ress_annotation_tags.should ==
           "<link href=\"http://m.foo.com/bar\" id=\"m\" media=\"stuff\" rel=\"alternate\" />"
+        end
+
       end
 
     end

@@ -1,13 +1,13 @@
-# Ress
+# RESS
 
 A system for building mobile optimized Rails applications using semantic,
-media query-based device detection and server side progressive enhancement.
+media query-based device detection and server side component optimization.
 
 ## Background
 
-Ress is an extension of the [devicejs](https://github.com/borismus/device.js)
+RESS is an extension of the [devicejs](https://github.com/borismus/device.js)
 library written by [Boris Smus](http://smus.com/). It adds a back end for
-adapting server responses based on client side feature detection. Ress allows
+adapting server responses based on client side feature detection. RESS allows
 you to specify alternate versions of your website, along with media queries
 for which devices should be redirected to which version.
 
@@ -15,7 +15,7 @@ for which devices should be redirected to which version.
 
 ### HTML Annotations
 
-When you register alternate mobile versions of your website, Ress adds annotations
+When you register alternate mobile versions of your website, RESS adds annotations
 to the `<head>` of your document that describe where these pages are located and
 which devices should be redirected to them.
 
@@ -43,7 +43,7 @@ all of the `[rel="alternate"]` links in your markup, and evalute their media que
 to determine if there is an alternate version available that matches the client.
 If there is, the user is redirected to the url for that version.
 
-### Server Side Components
+### Server Side Component Optimization
 
 Ress allows you to customize how your Rails application responds to mobile requests in
 two ways:
@@ -122,6 +122,24 @@ has been packaged with the gem by setting `config.include_modernizr = true` in
 make sure that it includes "Touch Events" and "Media Queries", eg:
 
 http://modernizr.com/download/#-touch-mq-teststyles-prefixes
+
+### Sessions and Cookies
+
+In order to share sessions and cookies between the different subdomains used by the
+alternate versions of your app, you need to configure the `:domain` option both in
+the `config/initializers/session_store.rb` and when setting cookies. For more
+information about how this works see this
+[Railscast](http://railscasts.com/episodes/221-subdomains-in-rails-3).
+
+### Development
+
+Because RESS uses subdomains, while developing alternate versions you cannot
+load your site via `localhost` or an IP address. If you want to test on
+the same machine you are running your rails app on, you can load it through
+http://lvh.me or install [pow](http://pow.cx/) and set up a `.dev` domain
+for your app. If you need to test on a mobile device you might want to try
+http://xip.io/.
+
 
 ## Performance considerations
 

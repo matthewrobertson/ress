@@ -1,8 +1,8 @@
 require_relative '../../lib/ress'
 
-describe Ress::CategoryCollection do
+describe Ress::Config do
 
-  let(:collection) { Ress::CategoryCollection.new }
+  let(:collection) { Ress::Config.new }
 
   describe '#add_alternate' do
 
@@ -27,12 +27,12 @@ describe Ress::CategoryCollection do
   describe 'canonical_version' do
 
     it 'defaults to a canonical_version with no subdomain' do
-      collection.canonical_version.subdomain.should be_false
+      collection.canonical_version.matches?('').should be_true
     end
 
     it 'can be altered through set_canonical' do
       collection.set_canonical :subdomain => 'foo'
-      collection.canonical_version.subdomain.should == 'foo'
+      collection.canonical_version.matches?('foo').should be_true
     end
 
   end

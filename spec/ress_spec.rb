@@ -5,7 +5,7 @@ describe Ress do
   describe '.configure' do
 
     it 'yields the default category collection' do
-      Ress.configure { |r| r.should be_a(Ress::CategoryCollection) }
+      Ress.configure { |r| r.should be_a(Ress::Config) }
     end
 
   end
@@ -18,7 +18,7 @@ describe Ress do
 
     it 'can be altered through Ress.configure' do
       Ress.configure { |r| r.set_canonical :subdomain => 'foo' }
-      Ress.canonical_version.subdomain.should == 'foo'
+      Ress.canonical_version.matches?('foo').should be_true
     end
 
   end
@@ -47,6 +47,22 @@ describe Ress do
 
       Ress.configure { |r| r.include_modernizr = false }
       Ress.include_modernizr?.should be_false
+    end
+
+  end
+
+  describe '.replace_canonical_subdomain?' do
+
+    it 'defaults to false' do
+      Ress.replace_canonical_subdomain?.should be_false
+    end
+
+    it 'can be altered through Ress.configure' do
+      Ress.configure { |r| r.replace_canonical_subdomain = true }
+      Ress.replace_canonical_subdomain?.should be_true
+
+      Ress.configure { |r| r.replace_canonical_subdomain = false }
+      Ress.replace_canonical_subdomain?.should be_false
     end
 
   end
