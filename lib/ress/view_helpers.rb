@@ -3,9 +3,7 @@ module Ress
   module ViewHelpers
 
     def ress_annotation_tags(options={})
-      options = { :fullpath => nil }.merge(options)
-      fullpath = options[:fullpath]
-      fullpath ||= request.fullpath
+      fullpath = options[:fullpath] || request.fullpath
 
       path = "#{request.host_with_port}#{fullpath}"
       html = if canonical_request?
