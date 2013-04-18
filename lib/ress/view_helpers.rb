@@ -2,8 +2,12 @@ module Ress
 
   module ViewHelpers
 
-    def ress_annotation_tags
-      path = "#{request.host_with_port}#{request.fullpath}"
+    def ress_annotation_tags(options={})
+      options = { :fullpath => nil }.merge(options)
+      fullpath = options[:fullpath]
+      fullpath ||= request.fullpath
+
+      path = "#{request.host_with_port}#{fullpath}"
       html = if canonical_request?
         Ress.alternate_versions.map do |category|
           category.link_tag(request.protocol, path, self)

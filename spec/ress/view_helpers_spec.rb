@@ -53,6 +53,16 @@ describe ActionView::Base do
 
     end
 
+    context 'with fullpath argument' do
+      let(:request) { stub('request', :protocol => 'http://', :host_with_port => 'foo.com', :fullpath => '/bar', :subdomain => '') }
+      before { view.stub(:canonical_request? => true) }
+
+      it 'gerenates the link tags using the fullpath argument instead' do
+        view.ress_annotation_tags(:fullpath => '/notbar').should ==
+          "<link href=\"http://m.foo.com/notbar\" id=\"m\" media=\"stuff\" rel=\"alternate\" />"
+      end
+    end
+
   end
 
 end
